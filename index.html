@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foodify - Home</title>
+    <link rel="stylesheet" href="homepage.css">
+
+
+
+    <style>
+  /* Mobile hamburger button */
+  .menu-btn {
+    display: none; /* hidden on desktop */
+    font-size: 30px;
+    cursor: pointer;
+    border: none;
+    background: none;
+  }
+
+  /* Mobile nav menu */
+  .mobile-nav-links {
+    max-height: 0; /* hidden by default */
+    overflow: hidden;
+    flex-direction: column;
+    background-color: #f0f0f0;
+    transition: max-height 0.3s ease-out;
+  }
+
+  .mobile-nav-links a {
+    padding: 10px 20px;
+    text-decoration: none;
+    color: black;
+    display: block;
+  }
+
+  .mobile-nav-links a:hover {
+    color: blue;
+  }
+
+  /* Show hamburger and hide desktop nav on small screens */
+  @media screen and (max-width: 768px) {
+    .menu-btn {
+      display: block;
+    }
+  }
+
+  /* Active class to slide down mobile menu */
+  .mobile-nav-links.active {
+    max-height: 500px; /* big enough to show all links */
+  }
+</style>
+   
+</head>
+<body>
+
+<!-- Top Bar -->
+<div class="top-bar">
+    <div class="top-bar-info">
+        <span class="contact-info">031054866666 | foodify@bistrobliss</span>
+        <div class="nav-links">
+            <a href="homepage.html" class="nav-link active">Home</a>
+            <a href="about.html" class="nav-link">About</a> <!-- About page is selected -->
+            <a href="menu.html" class="nav-link">Menu</a>
+            <a href="order.html" class="nav-link">Book</a> <!-- Added nav-link -->
+        </div>
+        <!-- Hamburger button for mobile -->
+  <button class="menu-btn" id="menuBtn">&#9776;</button>
+
+    <!-- Mobile menu (hidden by default, toggled by JS) -->
+    <div class="mobile-nav-links" id="mobileNavLinks">
+      <a href="homepage.html" class="nav-link">Home</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="menu.html" class="nav-link">Menu</a>
+      <a href="order.html" class="nav-link">Book</a>
+    </div>
+  </div>
+</div>
+
+
+<!-- Header -->
+<header class="header">
+    <img src="logo.png" alt="Foodify Logo" class="logo">
+     <a href="login.html">
+        <button class="login-btn">Login</button>
+    </a>
+</div>
+</header>
+
+<!-- Main Section -->
+<section class="main-section">
+    <div class="background-image">
+        <div class="overlay-text">
+            <h1>Where Taste Meets Convenience</h1>
+          <p class="triangle-text">
+        Discover delectable flavors with Foodify<br>
+        <span class="sub-text">every meal, an unforgettable experience.</span>
+            <div class="buttons">
+    <a href="order.html" class="btn">Start Reservation</a>
+    <a href="menu.html" class="btn">Our Menu</a>
+</div>
+        </div>
+    </div>
+</section>
+ <div class="frame">
+    <h2><span class="emoji">🔍</span> Discover Our Menu!</h2> <!-- Emoji before the text -->
+</div>
+    <div class="cards-section">
+    <div class="card">
+        <span class="emoji">🍳</span> <!-- Breakfast Emoji -->
+        <h3>Breakfast</h3>
+        <p>In the new era of technology, we look to the future with certainty and pride for our life.</p>
+        <a href="menu.html">Our Menu</a>
+    </div>
+    <div class="card">
+        <span class="emoji">🥗</span> <!-- Lunch Emoji -->
+        <h3>Lunch</h3>
+        <p>In the new era of technology, we look to the future with certainty and pride for our life.</p>
+        <a href="menu.html">Our Menu</a>
+    </div>
+    <div class="card">
+        <span class="emoji">🍽️</span> <!-- Dinner Emoji -->
+        <h3>Dinner</h3>
+        <p>In the new era of technology, we look to the future with certainty and pride for our life.</p>
+        <a href="menu.html">Our Menu</a>
+    </div>
+    <div class="card">
+        <span class="emoji">🍰</span> <!-- Sweet Treats Emoji -->
+        <h3>Sweet Treats</h3>
+        <p>In the new era of technology, we look to the future with certainty and pride for our life.</p>
+        <a href="menu.html">Our Menu</a>
+    </div>
+</div>
+    <!-- Wholesome Meals Section -->
+   <div class="wholesome-meals-section">
+    <img src="meal-picture.jpg" alt="Meal Picture" class="meal-picture">
+    <div class="text-content">
+        <h3>Wholesome Meals for Your Loved Ones</h3>
+        <p>At Foodify, we believe that dining is not just about food, it's about creating an experience. Every meal we serve is crafted with care, ensuring that each bite is filled with flavor and nutrition. Our friendly and dedicated staff goes above and beyond to make sure your visit is memorable, from the moment you walk in until the last bite. We don't just serve meals; we create moments that will stay with you long after your plate is empty.</p>
+    </div>
+    <!-- Contact Us Card inside the wholesome-meals-section -->
+    <div class="contact-card">
+        <div class="contact-info">
+            <h3>Come and visit us</h3>
+            <p>📞 03105486666</p>
+            <p>📧 foodify@restaurant.com</p>
+            <p>📍 837 W. Marshall Lane, Marshalltown, IA 50158, Los Angeles</p>
+        </div>
+    </div>
+</div>
+<!-- Footer -->
+ <footer class="footer">
+    <div class="footer-logo">
+        <img src="logo.png" alt="Foodify Logo">
+    </div>
+
+    <!-- Content container for Collage and Footer Links (side by side) -->
+    <div class="footer-content">
+        <!-- Image Collage Section (centered) -->
+        <div class="collage-container">
+            <div class="collage-row">
+                <img src="image1.jpg" alt="Image 1" class="collage-image">
+                <img src="image2.jpg" alt="Image 2" class="collage-image">
+            </div>
+            <div class="collage-row">
+                <img src="image3.jpg" alt="Image 3" class="collage-image">
+                <img src="image4.jpg" alt="Image 4" class="collage-image">
+            </div>
+        </div>
+
+        <!-- Pages List on the right -->
+        <div class="footer-links">
+            <ul>
+                <h3>Pages</h3>
+                <li><a href="homepage.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Paragraph Text at the bottom center -->
+    <p>As technology evolves, we look to the future with pride and certainty, ready to grow our company and embrace new opportunities.</p>
+</footer>
+
+
+
+<div id="chatbot-btn"></div>
+
+<div id="chatbot-container">
+    <div id="chatbot-header" style="display:flex; align-items:center; justify-content:space-between; padding:5px; background:#a26c3e; color:white;">
+        <span id="chatbot-close" style="cursor:pointer; color:white; font-weight:bold;">✖</span>
+        <span style="flex:1; text-align:center; font-weight:bold;">Foodify Chat</span>
+    </div>
+        <div id="chatbot-messages"></div>
+    <div style="display:flex; padding:5px; background:#f5f5f5;">
+        <input type="text" id="chatbot-input" placeholder="Type your message..." />
+        <button id="chatbot-send">Send</button>
+    </div>
+</div>
+    <script src="bot.js"></script>
+</body>
+</html>
