@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login & SignUp</title>
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+  <div class="container">
+
+    <!-- Login Form -->
+    <div class="form-container login-form">
+      <h2>Login</h2>
+<form method="post" action="submit-login.php">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+        
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+        
+        <button type="submit" class="main-btn">Login</button>
+      </form>
+
+      <!-- OR Divider -->
+      <div class="divider"><span>OR</span></div>
+
+      <!-- Social Buttons -->
+      <div class="social-login">
+        <button type="button" class="google" onclick="window.open('https://accounts.google.com/signin','_blank')">
+          <img src="google.png" alt=""> Continue with Google
+        </button>
+        <button type="button" class="microsoft" onclick="window.open('https://login.microsoftonline.com/','_blank')">
+          <img src="microsoft.png" alt=""> Continue with Microsoft
+        </button>
+        <button type="button" class="apple" onclick="window.open('https://appleid.apple.com/','_blank')">
+          <img src="apple.png" alt=""> Continue with Apple
+        </button>
+      </div>
+
+      <p class="signup-link">Don't have an account? <a href="#" id="signupLink">Sign up</a></p>
+    </div>
+
+    <!-- Sign Up Form -->
+    <div class="form-container signup-form" style="display:none;">
+      <h2>Sign Up</h2>
+<form method="post" action="submit-signup.php">
+            <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+        
+        <label for="email-signup">Email</label>
+        <input type="email" id="email-signup" name="email" placeholder="Enter your email" required>
+        
+        <label for="password-signup">Password</label>
+        <input type="password" id="password-signup" name="password" placeholder="Enter your password" required>
+        
+        <button type="submit" class="main-btn">Sign Up</button>
+      </form>
+
+      <!-- OR Divider -->
+      <div class="divider"><span>OR</span></div>
+
+      <!-- Social Buttons -->
+      <div class="social-login">
+        <button type="button" class="google" onclick="window.open('https://accounts.google.com/signin','_blank')">
+          <img src="google.png" alt=""> Continue with Google
+        </button>
+        <button type="button" class="microsoft" onclick="window.open('https://login.microsoftonline.com/','_blank')">
+          <img src="microsoft.png" alt=""> Continue with Microsoft
+        </button>
+        <button type="button" class="apple" onclick="window.open('https://appleid.apple.com/','_blank')">
+          <img src="apple.png" alt=""> Continue with Apple
+        </button>
+      </div>
+
+      <p class="login-link">Already have an account? <a href="#" id="loginLink">Login</a></p>
+    </div>
+
+    <!-- Right side image -->
+    <div class="image-section">
+      <img src="login-image.jpg" alt="Login Image">
+    </div>
+  </div>
+
+  <!-- JS for switching forms -->
+  <script src="login.js"></script>
+</body>
+</html>

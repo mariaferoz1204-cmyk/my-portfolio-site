@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Food</title>
+    <link rel="stylesheet" href="order.css">
+
+<style>
+  /* Mobile hamburger button */
+  .menu-btn {
+    display: none; /* hidden on desktop */
+    font-size: 30px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    margin-left: 10px;
+  }
+
+  /* Mobile nav menu */
+  .mobile-nav-links {
+    max-height: 0; /* hidden by default */
+    overflow: hidden;
+    flex-direction: column;
+    background-color: #f0f0f0;
+    transition: max-height 0.3s ease-out;
+  }
+
+  .mobile-nav-links a {
+    padding: 10px 20px;
+    text-decoration: none;
+    color: black;
+    display: block;
+  }
+
+  .mobile-nav-links a:hover {
+    color: blue;
+  }
+
+  /* Show hamburger on small screens */
+  @media screen and (max-width: 768px) {
+    .menu-btn {
+      display: block;
+    }
+
+    /* Hide desktop nav on small screens */
+    .nav-links {
+      display: none;
+    }
+  }
+
+  /* Active class for mobile menu */
+  .mobile-nav-links.active {
+    max-height: 500px;
+  }
+</style>
+<style>
+#order-now-btn.active,
+#mobileOrderBtn.active {
+  background-color: #ffcc00; /* Yellow background */
+  color: #fff;              /* Black text for contrast */
+  
+}
+.nav-link {
+    text-decoration: none;
+    color: #fff;
+    font-size: 14px;
+}
+
+.nav-link.active {
+    color: #ffcc00;
+    font-weight: bold;
+}
+  
+</style>
+
+</head>
+<body>
+    <div class="top-bar">
+    <div class="top-bar-info">
+        <span class="contact-info">031054866666 | foodify@bistrobliss</span>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="about.html" class="nav-link">About</a> <!-- About page is selected -->
+            <a href="menu.html" class="nav-link ">Menu</a>
+<button id="order-now-btn" class="active">Order Now</button>
+
+<script>
+  const orderBtn = document.getElementById('order-now-btn');
+  orderBtn.addEventListener('click', () => {
+    window.location.href = 'ordernow.html';
+  });
+</script>
+      </div>
+<button class="menu-btn" id="menuBtn">&#9776;</button>
+
+    <!-- Mobile nav links -->
+    <div class="mobile-nav-links" id="mobileNavLinks">
+      <a href="homepage.html" class="nav-link">Home</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="menu.html" class="nav-link">Menu</a>
+      <a href="order.html" class="nav-link">Book</a>
+    </div>
+  </div>
+</div>
+ 
+   
+
+
+<!-- Header -->
+<header class="header">
+    <img src="logo.png" alt="Foodify Logo" class="logo">
+    <div class="header-text">
+        <h1>Explore Our Menu or Book a Table</h1>
+        </div>
+     
+</header>
+    <!-- Hero Section with Background Image -->
+    <section class="hero-section">
+        <div class="hero-overlay">
+            <h1>Welcome to Our Restaurant</h1>
+            <p>Order food or book a table today!</p>
+            <div class="buttons">
+                <a href="menu.html" class="btn view-menu">View Menu</a>
+ <button class="btn book-table" id="bookTableBtn">Book a Table</button>            </div>
+        </div>
+    </section>
+
+    <section class="booking-form-section" id="booking-form">
+        <div class="form-container">
+            <button class="close-btn" id="closeBtn">&times;</button>
+            <h2>Book a Table</h2>
+            <form>
+                <label for="name">Your Name</label>
+                <input type="text" id="name" placeholder="Enter your name" required>
+
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" placeholder="Enter your phone number" required>
+
+                <label for="date">Date</label>
+                <input type="date" id="date" required>
+
+                <label for="time">Time</label>
+                <input type="time" id="time" required>
+
+                <label for="guests">Number of Guests</label>
+                <input type="number" id="guests" placeholder="How many people?" required min="1">
+
+                <button type="submit" class="btn submit-booking">Submit Booking</button>
+            </form>
+        </div>
+    </section>
+    <footer>
+        <p>Privacy Policy | Terms of Service | Contact Us</p>
+    </footer>
+
+    <script>
+        // Toggle booking form visibility
+        const bookTableButton = document.getElementById('bookTableBtn');
+        const bookingForm = document.getElementById('booking-form');
+
+        bookTableButton.addEventListener('click', function() {
+            if (bookingForm.style.display === 'none' || bookingForm.style.display === '') {
+                bookingForm.style.display = 'block';  // Show the form
+            } else {
+                bookingForm.style.display = 'none';  // Hide the form
+            }
+        });
+    </script>
+     <script src="table.js"></script>
+
+</body>
+</html>

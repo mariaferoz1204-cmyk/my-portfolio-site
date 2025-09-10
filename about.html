@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foodify - About</title>
+    <link rel="stylesheet" href="about.css">
+
+
+
+
+ <style>
+  /* Mobile hamburger button */
+  .menu-btn {
+    display: none; /* hidden on desktop */
+    font-size: 30px;
+    cursor: pointer;
+    border: none;
+    background: none;
+  }
+
+  /* Mobile nav menu */
+  .mobile-nav-links {
+    max-height: 0; /* hidden by default */
+    overflow: hidden;
+    flex-direction: column;
+    background-color: #f0f0f0;
+    transition: max-height 0.3s ease-out;
+  }
+
+  .mobile-nav-links a {
+    padding: 10px 20px;
+    text-decoration: none;
+    color: black;
+    display: block;
+  }
+
+  .mobile-nav-links a:hover {
+    color: blue;
+  }
+
+  /* Show hamburger and hide desktop nav on small screens */
+  @media screen and (max-width: 768px) {
+    .menu-btn {
+      display: block;
+    }
+  }
+
+  /* Active class to slide down mobile menu */
+  .mobile-nav-links.active {
+    max-height: 500px; /* big enough to show all links */
+  }
+</style>
+   
+
+</head>
+<body>
+
+<!-- Top Bar -->
+
+    
+     <div class="top-bar">
+    <div class="top-bar-info">
+        <span class="contact-info">031054866666 | foodify@bistrobliss</span>
+        <div class="nav-links">
+            <a href="homepage.html" class="nav-link">Home</a>
+            <a href="about.html" class="nav-link active">About</a> <!-- About page is selected -->
+            <a href="menu.html" class="nav-link">Menu</a>
+            <a href="order.html" class="nav-link">Book</a> <!-- Added nav-link -->
+        </div>
+
+   <!-- Hamburger button for mobile -->
+  <button class="menu-btn" id="menuBtn">&#9776;</button>
+
+    <!-- Mobile menu (hidden by default, toggled by JS) -->
+    <div class="mobile-nav-links" id="mobileNavLinks">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="menu.html" class="nav-link">Menu</a>
+      <a href="order.html" class="nav-link">Book</a>
+    </div>
+  </div>
+</div>
+
+   
+
+<!-- Header -->
+<header class="header">
+    <img src="logo.png" alt="Foodify Logo" class="logo">
+    <div class="header-info">
+        <img src="small-image.jpg" alt="Small Image" class="small-image"> <!-- Small Image added -->
+        <div class="header-text">
+            <h1>Fresh, delicious meals made for you</h1>
+            <p>At Foodify, we believe in delivering more than just food – we bring fresh, delicious meals right to your doorstep. Crafted with the finest ingredients, each dish is designed to satisfy your cravings and nourish your body. Whether you're enjoying a quick snack or a full meal, we promise quality, taste, and convenience, all served with a touch of love.</p>
+         <p>Our menu is constantly evolving, with new dishes and seasonal specials to keep things exciting. Whether you're craving comfort food or looking for something unique, we offer a wide variety of options that cater to every taste. Experience the ultimate dining convenience with Foodify – where every meal feels like a special occasion.</p>
+        </div>
+    </div>
+</header>
+
+<!-- Our Story Section -->
+<section class="our-story">
+    <div class="story-frame">
+        <div class="story-content">
+            <h2>Our Story</h2>
+            <p>Our journey started with a vision to make quality food accessible to everyone. At Foodify, we blend convenience with flavor, offering a variety of delicious meals that bring people together. Rooted in a passion for good food, we strive to deliver fresh, healthy options while embracing diverse culinary influences.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="features">
+    <div class="feature">
+        <h3>🍽️ Different Cuisine</h3>
+        <p>We specialize in bringing the finest direct cuisines to your table, each dish crafted to offer an authentic and unforgettable taste experience.</p>
+    </div>
+    <div class="feature">
+        <h3>📱 Easy To Order</h3>
+        <p>In this new era of technology, we confidently look to the future, making ordering as simple and seamless as possible.</p>
+    </div>
+    <div class="feature">
+        <h3>🚚 Fast Delivery</h3>
+        <p>In this new era of technology, we look toward the future with certainty, ensuring your meals arrive quickly and fresh.</p>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-logo">
+        <img src="logo.png" alt="Foodify Logo">
+        <p>As technology evolves, we look to the future with pride and certainty, ready to grow our company and embrace new opportunities.</p>
+    </div>
+<div class="footer-content">
+    <!-- Image Collage Section (centered) -->
+    <div class="collage-container">
+        <div class="collage-row">
+            <img src="image1.jpg" alt="Image 1" class="collage-image">
+            <img src="image2.jpg" alt="Image 2" class="collage-image">
+        </div>
+        <div class="collage-row">
+            <img src="image3.jpg" alt="Image 3" class="collage-image">
+            <img src="image4.jpg" alt="Image 4" class="collage-image">
+        </div>
+    </div>
+</div>
+    <div class="footer-links">
+       <h2>Pages</h2>
+        <ul>
+            <li><a href="homepage.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
+     <p class="copyright">Copyright © 2023 Hashtag Developer. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>

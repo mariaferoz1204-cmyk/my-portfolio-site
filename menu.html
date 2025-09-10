@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foodify - Home</title>
+    <link rel="stylesheet" href="menu.css">
+     <style>
+#order-now-btn {
+    background-color: #a16b3f;
+    color: #fff;
+    border: none;
+    padding: 12px 25px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+}
+
+#order-now-btn:hover {
+    background-color: #e5533d;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+}
+</style>
+
+
+ <style>
+  /* Mobile hamburger button */
+  .menu-btn {
+    display: none; /* hidden on desktop */
+    font-size: 30px;
+    cursor: pointer;
+    border: none;
+    background: none;
+  }
+
+  /* Mobile nav menu */
+  .mobile-nav-links {
+    max-height: 0; /* hidden by default */
+    overflow: hidden;
+    flex-direction: column;
+    background-color: #f0f0f0;
+    transition: max-height 0.3s ease-out;
+  }
+
+  .mobile-nav-links a {
+    padding: 10px 20px;
+    text-decoration: none;
+    color: black;
+    display: block;
+  }
+
+  .mobile-nav-links a:hover {
+    color: blue;
+  }
+
+  /* Show hamburger and hide desktop nav on small screens */
+  @media screen and (max-width: 768px) {
+    .menu-btn {
+      display: block;
+    }
+  }
+
+  /* Active class to slide down mobile menu */
+  .mobile-nav-links.active {
+    max-height: 500px; /* big enough to show all links */
+  }
+</style>
+   
+</head>
+<body>
+
+<div class="top-bar">
+    <div class="top-bar-info">
+        <span class="contact-info">031054866666 | foodify@bistrobliss</span>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="about.html" class="nav-link">About</a> <!-- About page is selected -->
+            <a href="menu.html" class="nav-link active">Menu</a>
+            <a href="order.html" class="nav-link">Book</a> <!-- Added nav-link -->
+        </div>
+         <!-- Hamburger button for mobile -->
+  <button class="menu-btn" id="menuBtn">&#9776;</button>
+
+    <!-- Mobile menu (hidden by default, toggled by JS) -->
+    <div class="mobile-nav-links" id="mobileNavLinks">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="menu.html" class="nav-link">Menu</a>
+      <a href="order.html" class="nav-link">Book</a>
+    </div>
+  </div>
+</div>
+
+
+<!-- Header -->
+<header class="header">
+    <img src="logo.png" alt="Foodify Logo" class="logo">
+     <div class="menu-options">
+        <a href="#" class="menu-option" id="breakfast-btn">Breakfast</a>  
+      <a href="#" class="menu-option" id="lunch-btn">Lunch</a>
+        <a href="#" class="menu-option" id="dinner-btn">Dinner</a>
+       <a href="#" class="menu-option" id="sweet-treats-btn">Sweet Treats</a>
+
+    </div>
+</header>
+
+<!-- Breakfast Popup (hidden initially) -->
+<div id="breakfast-popup" class="popup">
+    <div class="popup-content">
+        <button class="close-popup" id="close-popup">×</button>
+        <h2>☕Breakfast!</h2>
+        <p>Start your day with our delicious breakfast options.</p>
+
+        <!-- First Row of Breakfast Cards -->
+        <div class="popup-cards">
+            <!-- Card 1 -->
+            <div class="popup-card">
+                <img src="sunrise_scramble.jpg" alt="Sunrise Scramble" class="popup-card-img">
+                <p class="price">Rs. 300</p>
+                <h3 class="card-title">Sunrise Scramble</h3>
+                <p>Scrambled eggs, bell peppers, onions, cheese, and a side of toast.</p>
+            </div>
+            <!-- Card 2 -->
+            <div class="popup-card">
+                <img src="morning_delight_pancakes.jpg" alt="Morning Delight Pancakes" class="popup-card-img">
+                <p class="price">Rs. 360</p>
+                <h3 class="card-title">Morning Delight Pancakes</h3>
+                <p>Fluffy pancakes served with maple syrup, fresh strawberries, and whipped cream.</p>
+            </div>
+            <!-- Card 3 -->
+            <div class="popup-card">
+                <img src="crispy_bacon_egg_sandwich.jpg" alt="Crispy Bacon Egg Sandwich" class="popup-card-img">
+                <p class="price">Rs. 280</p>
+                <h3 class="card-title">Crispy Bacon Egg Sandwich</h3>
+                <p>Bacon, a fried egg, lettuce, tomato, and mayo in a soft sandwich bun.</p>
+            </div>
+            <!-- Card 4 -->
+            <div class="popup-card">
+                <img src="avocado_toast_supreme.jpg" alt="Avocado Toast Supreme" class="popup-card-img">
+                <p class="price">Rs. 320</p>
+                <h3 class="card-title">Avocado Toast Supreme</h3>
+                <p>Toasted sourdough bread with mashed avocado, poached eggs, and a sprinkle of chili flakes.</p>
+            </div>
+        </div>
+
+        <!-- Second Row of Breakfast Cards -->
+        <div class="popup-cards">
+            <!-- Card 1 -->
+            <div class="popup-card">
+                <img src="veggie_power_bowl.jpg" alt="Veggie Power Bowl" class="popup-card-img">
+                <p class="price">Rs. 300</p>
+                <h3 class="card-title">Veggie Power Bowl</h3>
+                <p>Quinoa, avocado, cherry tomatoes, cucumber, spinach, and a lemon vinaigrette dressing.</p>
+            </div>
+            <!-- Card 2 -->
+            <div class="popup-card">
+                <img src="berry_yogurt_parfait.jpg" alt="Berry Yogurt Parfait" class="popup-card-img">
+                <p class="price">Rs. 340</p>
+                <h3 class="card-title">Berry Yogurt Parfait</h3>
+                <p>Greek yogurt, mixed berries, honey, and granola layered.</p>
+            </div>
+            <!-- Card 3 -->
+            <div class="popup-card">
+                <img src="chili_cheese_omelette.jpg" alt="Chili Cheese Omelette" class="popup-card-img">
+                <p class="price">Rs. 350</p>
+                <h3 class="card-title">Chili Cheese Omelette</h3>
+                <p>Eggs, cheddar cheese, jalapeños, onions, and a side of toast.</p>
+            </div>
+            <!-- Card 4 -->
+            <div class="popup-card">
+                <img src="buttermilk_waffles.jpg" alt="Buttermilk Waffles" class="popup-card-img">
+                <p class="price">Rs. 320</p>
+                <h3 class="card-title">Buttermilk Waffles</h3>
+                <p>Crispy waffles served with maple syrup, and a dusting of powdered sugar.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="lunch-popup" class="popup">
+    <div class="popup-content">
+        <button class="close-popup" id="close-lunch-popup">×</button>
+        <h2>Lunch!</h2>
+        <p>🍱Savor Your Midday Meal with Our Delicious Lunch Options</p>
+
+        <!-- First Row of Lunch Cards -->
+        <div class="popup-cards">
+            <div class="popup-card">
+                <img src="beef_burger.jpg" alt="Beef Supreme Burger" class="popup-card-img">
+                <p class="price">Rs. 800</p>
+                <h3 class="card-title">Beef Supreme Burger</h3>
+                <p>Made with ground beef, lettuce, tomato, cheese, onions, and special sauce.</p>
+            </div>
+            <div class="popup-card">
+                <img src="chicken_salad.jpg" alt="Grilled Chicken Salad" class="popup-card-img">
+                <p class="price">Rs. 350</p>
+                <h3 class="card-title">Grilled Chicken Salad</h3>
+                <p>Made with Grilled chicken breast, mixed greens, cucumbers, and a light vinaigrette dressing.</p>
+            </div>
+            <div class="popup-card">
+                <img src="spaghetti.jpg" alt="Spaghetti Aglio e Olio" class="popup-card-img">
+                <p class="price">Rs. 900</p>
+                <h3 class="card-title">Spaghetti Aglio e Olio</h3>
+                <p>Spaghetti, olive oil, garlic, red pepper flakes, parsley, and parmesan cheese.</p>
+            </div>
+            <div class="popup-card">
+                <img src="falafel_wrap.jpg" alt="Falafel Wrap" class="popup-card-img">
+                <p class="price">Rs. 350</p>
+                <h3 class="card-title">Falafel Wrap</h3>
+                <p>Crispy falafel balls, wrapped in a pita with lettuce, tomatoes, cucumbers, and tahini sauce.</p>
+            </div>
+        </div>
+
+        <!-- Second Row of Lunch Cards -->
+        <div class="popup-cards">
+            <div class="popup-card">
+                <img src="stir_fry.jpg" alt="Vegetable Stir-Fry" class="popup-card-img">
+                <p class="price">Rs. 350</p>
+                <h3 class="card-title">Vegetable Stir-Fry</h3>
+                <p>Stir-fried mixed vegetables (carrots, bell peppers) in soy sauce with a side of rice.</p>
+            </div>
+            <div class="popup-card">
+                <img src="chicken_tikka.jpg" alt="Chicken Tikka Masala" class="popup-card-img">
+                <p class="price">Rs. 550</p>
+                <h3 class="card-title">Chicken Tikka Masala</h3>
+                <p>Boneless chicken cooked in a creamy tomato gravy, served with basmati rice and naan bread.</p>
+            </div>
+            <div class="popup-card">
+                <img src="mutton_korma.jpg" alt="Mutton Korma" class="popup-card-img">
+                <p class="price">Rs. 600</p>
+                <h3 class="card-title">Mutton Korma</h3>
+                <p>Tender mutton cooked in a rich, creamy gravy made with yogurt, and a blend of aromatic spices.</p>
+            </div>
+            <div class="popup-card">
+                <img src="chicken_Biryani.jpg" alt="Chicken Biryani" class="popup-card-img">
+                <p class="price">Rs. 560</p>
+                <h3 class="card-title">Chicken Biryani</h3>
+                <p>Spiced rice, tender chicken, saffron, yogurt, onions, and fragrant spices.</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+<div id="dinner-popup" class="popup">
+    <div class="popup-content">
+        <button class="close-popup" id="close-dinner-popup">×</button>
+        <h2>🍝 Dinner!</h2>
+        <p>End Your Day with a Delicious Dinner Selection</p>
+
+        <!-- First Row of Dinner Cards -->
+        <div class="popup-cards">
+            <!-- Card 1 -->
+            <div class="popup-card">
+                <img src="chicken_karahi.jpg" alt="Chicken Karahi" class="popup-card-img">
+                <p class="price">Rs. 800</p>
+                <h3 class="card-title">Chicken Karahi</h3>
+                <p>Chicken cooked in a wok with ginger, garlic, tomatoes, green chilies, and aromatic spices.</p>
+            </div>
+            <!-- Card 2 -->
+            <div class="popup-card">
+                <img src="mutton_rogan_josh.jpg" alt="Mutton Rogan Josh" class="popup-card-img">
+                <p class="price">Rs. 950</p>
+                <h3 class="card-title">Mutton Rogan Josh</h3>
+                <p>Tender mutton slow-cooked in a rich gravy with yogurt, spices, and tomatoes.</p>
+            </div>
+            <!-- Card 3 -->
+            <div class="popup-card">
+                <img src="pasta_primavera.jpg" alt="Pasta Primavera" class="popup-card-img">
+                <p class="price">Rs. 900</p>
+                <h3 class="card-title">Pasta Primavera</h3>
+                <p>Made with Penne pasta, mixed vegetables, olive oil, garlic, and parmesan cheese.</p>
+            </div>
+            <!-- Card 4 -->
+            <div class="popup-card">
+                <img src="biryani_pulao.jpg" alt="Biryani Pulao" class="popup-card-img">
+                <p class="price">Rs. 550</p>
+                <h3 class="card-title">Biryani Pulao</h3>
+                <p>Fragrant basmati rice, marinated chicken or mutton, and a blend of aromatic spices.</p>
+            </div>
+        </div>
+
+        <!-- Second Row of Dinner Cards -->
+        <div class="popup-cards">
+            <!-- Card 1 -->
+            <div class="popup-card">
+                <img src="beef_quesadilla.jpg" alt="Beef Quesadilla" class="popup-card-img">
+                <p class="price">Rs. 400</p>
+                <h3 class="card-title">Beef Quesadilla</h3>
+                <p>Made with Grilled beef strips, melted cheese, onions, and flour tortillas.</p>
+            </div>
+            <!-- Card 2 -->
+            <div class="popup-card">
+                <img src="veggie_burger.jpg" alt="Veggie Burger" class="popup-card-img">
+                <p class="price">Rs. 550</p>
+                <h3 class="card-title">Veggie Burger</h3>
+                <p>Made with veggie patty made from beans, served with lettuce, tomato, and a whole wheat bun.</p>
+            </div>
+            <!-- Card 3 -->
+            <div class="popup-card">
+                <img src="vegetable_korma.jpg" alt="Vegetable Korma" class="popup-card-img">
+                <p class="price">Rs. 500</p>
+                <h3 class="card-title">Vegetable Korma</h3>
+                <p>Mixed vegetables cooked in a rich, creamy gravy made from yogurt, coconut, and spices.</p>
+            </div>
+            <div class="popup-card">
+                <img src="fish.jpg" alt="Fish Curry" class="popup-card-img">
+                <p class="price">Rs. 500</p>
+                <h3 class="card-title">Fish Curry</h3>
+                <p>Fish fillets cooked in a spicy, tangy curry with tomatoes, onions, and a mix of spices.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="sweet-treats-popup" class="popup">
+    <div class="popup-content">
+        <button class="close-popup" id="close-sweet-treats-popup">×</button>
+        <h2>🍩 Sweet Treats!</h2>
+        <p>Indulge in Our Decadent Sweet Treats to End Your Meal</p>
+
+        <!-- First Row of Sweet Treat Cards -->
+        <div class="sweet-treats-popup-cards">
+            <!-- Card 1 -->
+            <div class="sweet-treats-popup-card">
+                <img src="gulab_jamun.jpg" alt="Gulab Jamun" class="sweet-treats-popup-card-img">
+                <p class="sweet-treats-price">Rs. 150 - 2 pieces</p>
+                <h3 class="sweet-treats-card-title">Gulab Jamun</h3>
+                <p>Deep-fried dough balls soaked in a sweet rose-flavored syrup.</p>
+            </div>
+            <!-- Card 2 -->
+            <div class="sweet-treats-popup-card">
+                <img src="kheer.jpg" alt="Kheer" class="sweet-treats-popup-card-img">
+                <p class="sweet-treats-price">Rs. 250</p>
+                <h3 class="sweet-treats-card-title">Kheer</h3>
+                <p>Grated carrots cooked in milk and sugar, and garnished with nuts.</p>
+            </div>
+            <!-- Card 3 -->
+            <div class="sweet-treats-popup-card">
+                <img src="badam_barfi.jpg" alt="Badam Barfi" class="sweet-treats-popup-card-img">
+                <p class="sweet-treats-price">Rs. 250</p>
+                <h3 class="sweet-treats-card-title">Badam Barfi</h3>
+                <p>Almond-based sweet, made with ground almonds, sugar, and cut into diamond-shaped pieces.</p>
+            </div>
+            <!-- Card 4 -->
+            <div class="sweet-treats-popup-card">
+                <img src="saffron_pudding.jpg" alt="Saffron Pudding" class="sweet-treats-popup-card-img">
+                <p class="sweet-treats-price">Rs. 300</p>
+                <h3 class="sweet-treats-card-title">Saffron Pudding</h3>
+                <p>A rich pudding made with milk, saffron, dry fruits, served during special occasions.</p>
+            </div>
+        </div>
+
+        <!-- Second Row of Sweet Treat Cards -->
+        <div class="sweet-treats-popup-cards">
+            <!-- Card 1 -->
+            <div class="sweet-treats-popup-card">
+                <img src="tiramisu.jpg" alt="Tiramisu" class="sweet-treats-popup-card-img">
+                <p class="sweet-treats-price">Rs. 350</p>
+                <h3 class="sweet-treats-card-title">Tiramisu</h3>
+                <p>Layers of coffee-soaked ladyfingers, mascarpone cheese, and a dusting of chocolate.</p>
+            </div>
+            <!-- Card 2 -->
+            <div class="sweet-treats-popup-card">
+                <img src="doughnuts.jpg" alt="Doughnuts" class="sweet-treats-popup-card-img">
+                <p class="sweet-treats-price">Rs. 180 (for 2 pieces)</p>
+                <h3 class="sweet-treats-card-title">Doughnuts</h3>
+                <p>Delicious fried dough covered with sugar and filled with different fillings.</p>
+            </div>
+            <!-- Card 3 -->
+            <div class="sweet-treats-popup-card">
+                <img src="apple_pie.jpg" alt="Apple Pie" class="sweet-treats-popup-card-img">
+                <p class="sweet-treats-price">Rs. 700</p>
+                <h3 class="sweet-treats-card-title">Apple Pie</h3>
+                <p>Made with flaky pie crust, apple filling, served with a scoop of vanilla ice cream.</p>
+            </div>
+            <!-- Card 4 -->
+            <div class="sweet-treats-popup-card">
+                <img src="chocolate_cake.jpg" alt="Chocolate Cake" class="sweet-treats-popup-card-img">
+                <p class="sweet-treats-price">Rs. 400</p>
+                <h3 class="sweet-treats-card-title">Chocolate Cake</h3>
+                <p>Moist and rich chocolate cake with a creamy frosting.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<section class="menu-page">
+    <div class="menu-header">
+        <h2>Our Top Menu</h2>
+        <p>Click the button to see more</p>
+<button id="order-now-btn">Order Now</button>
+
+<script>
+  const orderBtn = document.getElementById('order-now-btn');
+  orderBtn.addEventListener('click', () => {
+    window.location.href = 'ordernow.html';
+  });
+</script>    </div>
+
+    <!-- First Row of Cards -->
+    <div class="menu-cards">
+        <div class="menu-card">
+            <img src="beef.jpg" alt="Beef Supreme Burger" class="menu-card-img">
+            <div class="card-content">
+                <p class="price">Rs. 800</p>
+                <h3 class="card-title">Beef Supreme Burger</h3>
+                <p class="description">Made with ground beef, lettuce, tomato, cheese, onions, and special sauce</p>
+            </div>
+        </div>
+        <div class="menu-card">
+            <img src="image2.jpg" alt="Grilled Chicken Salad" class="menu-card-img">
+            <div class="card-content">
+                <p class="price">Rs. 350</p>
+                <h3 class="card-title">Grilled Chicken Salad</h3>
+                <p class="description">Made with Grilled chicken breast, mixed greens, cucumbers and a light vinaigrette dressing</p>
+            </div>
+        </div>
+        <div class="menu-card">
+            <img src="pasta.jpg" alt="Pasta Primavera" class="menu-card-img">
+            <div class="card-content">
+                <p class="price">Rs. 900</p>
+                <h3 class="card-title">Pasta Primavera</h3>
+                <p class="description">Made with Penne pasta, mixed vegetables, olive oil, garlic, and parmesan cheese.</p>
+            </div>
+        </div>
+        <div class="menu-card">
+            <img src="wrap.jpg" alt="Falafel Wrap" class="menu-card-img">
+            <div class="card-content">
+                <p class="price">Rs. 350</p>
+                <h3 class="card-title">Falafel Wrap</h3>
+                <p class="description">Crispy falafel balls, wrapped in a pita with lettuce, tomatoes, cucumbers, and tahini sauce.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Second Row of Cards -->
+    <div class="menu-cards">
+        <div class="menu-card">
+            <img src="quesadilla.jpg" alt="Beef Quesadilla" class="menu-card-img">
+            <div class="card-content">
+                <p class="price">Rs. 400</p>
+                <h3 class="card-title">Beef Quesadilla</h3>
+                <p class="description">Made with Grilled beef strips, melted cheese, onions, and flour tortillas</p>
+            </div>
+        </div>
+        <div class="menu-card">
+            <img src="burger.jpg" alt="Veggie Burger" class="menu-card-img">
+            <div class="card-content">
+                <p class="price">Rs. 550</p>
+                <h3 class="card-title">Veggie Burger</h3>
+                <p class="description">Made with Veggie patty made from beans, served with lettuce, tomato, and a whole wheat bun.</p>
+            </div>
+        </div>
+        <div class="menu-card">
+            <img src="lava.jpg" alt="Chocolate Lava Cake" class="menu-card-img">
+            <div class="card-content">
+                <p class="price">Rs. 460</p>
+                <h3 class="card-title">Chocolate Lava Cake</h3>
+                <p class="description">Made with warm chocolate cake with a gooey molten center, served with vanilla ice cream.</p>
+            </div>
+        </div>
+        <div class="menu-card">
+            <img src="appple.jpg" alt="Apple Pie" class="menu-card-img">
+            <div class="card-content">
+                <p class="price">Rs. 700</p>
+                <h3 class="card-title">Apple Pie</h3>
+                <p class="description">Made with flaky pie crust, apple filling, served with a scoop of vanilla ice cream.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer (same as previous) -->
+<footer class="footer">
+    <div class="footer-logo">
+        <img src="logo.png" alt="Foodify Logo">
+        <p>As technology evolves, we look to the future with pride and certainty, ready to grow our company and embrace new opportunities.</p>
+    </div>
+    <div class="footer-content">
+        <div class="collage-container">
+            <div class="collage-row">
+                <img src="image1.jpg" alt="Image 1" class="collage-image">
+                <img src="image2.jpg" alt="Image 2" class="collage-image">
+            </div>
+            <div class="collage-row">
+                <img src="image3.jpg" alt="Image 3" class="collage-image">
+                <img src="image4.jpg" alt="Image 4" class="collage-image">
+            </div>
+        </div>
+    </div>
+    <div class="footer-links">
+        <h2>Pages</h2>
+        <ul>
+            <li><a href="homepage.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
+    <p class="copyright">Copyright © 2023 Hashtag Developer. All Rights Reserved.</p>
+</footer>
+<script src="popup.js"></script>
+</body>

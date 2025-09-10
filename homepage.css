@@ -1,0 +1,594 @@
+/* Reset default margins and padding */
+* 
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%; /* Make sure the page takes up 100% of the height */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+}
+
+
+.top-bar {
+    background-color: #474747;
+    color: #fff;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between; /* Space between contact info and nav links */
+    align-items: center; /* Vertically center the items */
+}
+
+/* Contact Information (on the left) */
+.contact-info {
+    font-size: 14px;
+    text-align: left; /* Left-align the contact info */
+    flex: 1; /* This ensures contact info stays on the left side */
+    margin-left: 30px;
+}
+
+
+/* Navigation Links Container (on the right) */
+.nav-links {
+    display: flex;
+    gap: 20px; /* Space between the nav links */
+    justify-content: flex-end; /* Align the links to the right */
+    text-align: right; /* Left-align the contact info */
+    flex: 1; 
+    margin-left: 1180px;
+}
+
+/* Hide hamburger button on desktop */
+.menu-btn {
+    display: none;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Hide links by default */
+        flex-direction: column;
+        gap: 10px;
+        background-color: #474747;
+        width: 100%;
+        margin-top: 10px;
+        padding: 10px 0;
+    }
+
+    .nav-links.show {
+        display: flex; /* Show when menu is clicked */
+    }
+
+    .menu-btn {
+        display: block; /* Show hamburger button on mobile */
+    }
+
+    .top-bar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+/* Style for each nav link */
+.nav-link {
+    text-decoration: none;
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+
+}
+
+/* Active Link Style */
+.nav-link.active {
+    color: #ffcc00; /* Highlight color for active link */
+    font-weight: bold; /* Make the active link bold */
+}
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: -4px -2px;  /* Reduced padding for a more compact header */
+    background-color: #fff;  /* White background */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow for subtle depth */
+}
+.logo {
+    width: 90px;  /* Adjust logo size */
+    margin-left: 50px;
+}
+.login-btn {
+    padding: 10px 20px;
+    background-color: #a26c3e;
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+/* Main Section */
+.main-section {
+    position: relative;
+    width: 100%;
+    flex-grow: 1;
+}
+
+.background-image {
+    background-image: url('background.jpg');
+    background-size: cover; /* Ensure the background image scales */
+    background-position: center; /* Centers the image */
+    width: 100%; /* 100% width of the container */
+    height: 120vh; /* Increase the height to make the background image bigger */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.overlay-text h1 {
+    font-size: 48px;
+    color: #a26c3e;
+    position: absolute; /* Positioning the text on top of the background */
+    top: 130px; /* Add space from the top */
+    right: 30px; /* Create a gap from the left side of the container */
+    margin: 0; /* Remove any default margin */
+}
+
+.overlay-text p {
+    font-size: 20px;
+    color: #a16b3f;
+    margin-top: 10px;
+    top:250px;
+     position: absolute;
+     right: 210px;
+      margin: 0;
+}
+
+.buttons {
+    position: absolute; /* Position buttons relative to the parent container */
+    top: 350px; /* Set the gap between the text and buttons */
+    right: 235px; /* Align the buttons to the right with the same gap */
+    display: flex;
+    gap: 20px; /* Add space between the buttons */
+}
+
+.btn {
+    background-color: #a26c3e;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.frame {
+    text-align: center;
+    padding: 20px;
+}
+
+.emoji {
+    font-size: 30px; /* Adjust the size of the emoji */
+    color: #a26c3e; /* Set the color for the emoji */
+    margin-right: 10px; /* Adds space between the emoji and text */
+}
+
+h2 {
+    font-size: 48px; /* Font size for the heading */
+    color: #a16b3f; /* Set color for the text */
+    display: inline-flex; /* Ensures the emoji and text are on the same line */
+    align-items: center; /* Vertically centers the emoji and text */
+}
+/* Cards Section */
+.cards-section {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+    gap: 20px;
+}
+
+.card {
+    width: 23%;
+    text-align: center;
+    background-color: #f9f9f7;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.card img {
+    width: 50px;
+    height: auto;
+}
+
+.card h3 {
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.card p {
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.card a {
+    display: block;
+    margin-top: 10px;
+    text-decoration: none;
+    color: #031054;
+}
+
+/* Wholesome Meals Section */
+.wholesome-meals-section {
+    position: relative; /* Make this container the reference for absolutely positioned child elements */
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+
+.meal-picture {
+    width: 649px;
+    height: 616px;
+    border-radius: 8px;
+}
+
+.text-content {
+    max-width: 500px;
+    padding-left: 20px;
+    margin-right: 230px;
+    margin-top: -20px;
+}
+
+.text-content h3 {
+    font-size: 40px;
+    margin-top: 70px; /* Add some space from the top */
+    color: #a26c3e;
+}
+
+.text-content p {
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+/* Contact Card Positioned on the Right */
+.contact-card {
+    position: absolute; /* Position the card relative to the .wholesome-meals-section */
+    bottom: -35px; /* 20px from the bottom */
+    background-color: #a26c3e;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(251, 250, 250, 0.1);
+    width: 290px;
+    height: 250px; /* Adjust width of the card */
+ margin-left: 480px;    color: #fbfbfd;
+}
+
+.contact-info h3 {
+    font-size: 20px;
+    color: #f8f9fd;
+    position: left;
+    padding-bottom: 10px;
+    padding-top: 20px;
+    
+
+}
+
+.contact-info p {
+    position: center;
+    font-size: 14px;
+    color: #f8f6f5;
+    margin-top: 10px;
+     
+}
+/* Footer */
+/* General Footer Styles */
+.footer {
+    background-color: #474747; /* Black background */
+    color: #ffffff; /* White text */
+    padding: 40px 0; /* Padding for top and bottom */
+    text-align: center; /* Center the text */
+    width: 100%; /* Make sure it spans the full width */
+    margin-top: 0; /* Ensure no extra space above */
+    display: flex; /* Use flexbox for the footer layout */
+    flex-direction: column; /* Stack items vertically */
+    justify-content: flex-start; /* Align the elements at the top */
+    align-items: center; /* Center align the content */
+}
+
+/* Footer Logo Styles */
+.footer-logo {
+    align-self: flex-start; /* Align the logo to the left */
+    margin-top: 20px; /* Add some gap from the top */
+}
+
+.footer-logo img {
+    width: 150px; /* Logo size */
+    height: auto;
+    margin-bottom: 20px;
+}
+
+/* Content container for Collage and Links (side by side) */
+/* General Footer Styles */
+.footer {
+    background-color: #474747; /* Black background */
+    color: #ffffff; /* White text */
+    padding: 40px 0; /* Padding for top and bottom */
+    text-align: center; /* Center the text */
+    width: 100%; /* Make sure it spans the full width */
+    margin-top: 0; /* Ensure no extra space above */
+    display: flex; /* Use flexbox for the footer layout */
+    flex-direction: column; /* Stack items vertically */
+    justify-content: flex-start; /* Align the elements at the top */
+    align-items: center; /* Center align the content */
+}
+
+/* Footer Logo Styles */
+.footer-logo {
+    align-self: flex-start; /* Align the logo to the left */
+    margin-top: 20px; /* Add some gap from the top */
+}
+
+.footer-logo img {
+    width: 150px; /* Logo size */
+    height: auto;
+    margin-bottom: 20px;
+}
+
+/* Content container for Collage and Links (side by side) */
+.footer-content {
+    display: flex; /* Use flexbox to align collage and links horizontally */
+    justify-content: flex-start; /* Align items to the left */
+    gap: 50px; /* Adds space between the collage and the links */
+    align-items: center; /* Align items to the center vertically */
+    width: 80%; /* Set width of the content container */
+    margin-top: 20px; /* Adds some space between the logo and content */
+}
+
+/* Collage Styling (centered) */
+.collage-container {
+    display: flex;
+    flex-direction: column; /* Stack the images in rows */
+    align-items: center; /* Center images horizontally */
+    gap: 20px; /* Adds space between the rows of images */
+    width: 100%; /* Ensure the collage takes up full width */
+    text-align: center; /* Center text inside collage if needed */
+    margin-top: -100px;
+}
+
+.collage-row {
+    display: flex; /* Align images in a row */
+    gap: 20px; /* Adds space between the images in the row */
+    justify-content: center; /* Center images horizontally within the row */
+}
+
+.collage-image {
+    width: 100px; /* Adjust image width */
+    height: 100px; /* Adjust image height */
+    object-fit: cover; /* Ensure images fit the container */
+    border-radius: 8px; /* Optional: Adds rounded corners to images */
+}
+
+/* Footer Links Styling */
+.footer-links {
+    display: flex;
+    flex-direction: column; /* Stack the links vertically */
+    align-items: flex-start; /* Align links to the left */
+    gap: 5px; /* Adds space between the list items */
+    margin-left: 30px; /* Move the list slightly to the right */
+}
+.footer-links h3 {
+    color: #fff; /* Color of the heading */
+    font-size: 28px;  /* Set font size for the heading */
+    margin-bottom: 20px;
+     /* Add space below the heading */
+}
+.footer-links ul {
+    list-style-type: none; /* Removes bullet points from the list */
+    padding: 0; /* Removes default padding */
+    margin: 0; /* Removes default margin */
+}
+
+.footer-links li {
+    margin: 0;
+    margin-bottom: 20px; /* No extra margin for each list item */
+    margin-top: 20px;
+}
+
+.footer-links a {
+    text-decoration: none; /* Removes underline from the links */
+    color: #fff; /* Set the color of the links */
+    font-size: 16px; /* Set the font size for the links */
+}
+
+/* Paragraph Styling (Centered at the bottom) */
+footer p {
+    font-size: 16px;
+    color: #f8f7f6;
+    margin-top: 40px; /* Add space between footer content and paragraph */
+    text-align: center; /* Center align the paragraph */
+}
+/* Ensure footer stays at the bottom */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.main-section {
+    flex-grow: 1;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .cards-section {
+        flex-direction: column; /* Stack the cards vertically on smaller screens */
+    }
+
+    .card {
+        width: 100%; /* Make each card take full width */
+        margin-bottom: 20px;
+    }
+
+    .wholesome-meals-section {
+        flex-direction: column;
+    }
+
+    .meal-picture {
+        width: 100%;
+        height: auto;
+    }
+
+    .text-content {
+        margin-right: 0;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .footer-links {
+        text-align: center;
+    }
+}
+#chatbot-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: #a26c3e;   /* primary color */
+    border: 3px solid #474747;   /* secondary color */
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+#chatbot-btn:hover {
+    transform: scale(1.1);
+    background-color: #ffcc00;
+}
+
+#chatbot-btn::before {
+    content: "💬";
+    font-size: 24px;
+}
+
+/* Chatbot window (hidden by default) */
+/* Chatbot container */
+#chatbot-container {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 350px;
+    max-height: 500px;
+    background-color: #474747; /* secondary color */
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    flex-direction: column;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    z-index: 9999;
+}
+
+/* Chatbot header */
+#chatbot-header {
+    background-color: #a26c3e; /* primary color */
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* Messages container */
+#chatbot-messages {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #f5f5f5;
+}
+
+/* User message (left) */
+.user-message {
+    align-self: flex-start;
+    background-color: #ffffff;
+    color: #000;
+    padding: 10px 15px;
+    border-radius: 15px 15px 15px 0;
+    max-width: 80%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Bot message (right) */
+.bot-message {
+    align-self: flex-end;
+    background-color: #a26c3e; /* primary color */
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 15px 15px 0 15px;
+    max-width: 80%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Typing indicator */
+#typing-indicator {
+    align-self: flex-end;
+    font-style: italic;
+    color: #ddd;
+}
+
+/* Input and send button container */
+#chatbot-input {
+    width: 75%;
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    outline: none;
+    margin: 10px;
+}
+
+#chatbot-send {
+    width: 20%;
+    background-color: #a26c3e;
+    border: none;
+    color: white;
+    padding: 10px;
+    border-radius: 15px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+#chatbot-send:hover {
+    background-color: #8b5532;
+}
+
+/* Input area container */
+#chatbot-container input,
+#chatbot-container button {
+    font-size: 14px;
+}
+/* 📱 Responsive */
+@media (max-width: 768px) {
+    .overlay-text h1 { font-size: 2rem; }
+    .overlay-text p { font-size: 1rem; }
+    .cards-section { flex-direction: column; }
+    .wholesome-meals-section { flex-direction: column; }
+    .footer-content { flex-direction: column; }
+}

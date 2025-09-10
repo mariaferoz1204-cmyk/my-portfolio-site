@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Now Page</title>
+     <link rel="stylesheet" href="ordernow.css">
+    <style>
+        /* Cart Button */
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    padding: 20px;
+}
+
+/* Cart Button */
+.cart-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #ff6600;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.cart-btn:hover {
+    background-color: #ff9900;
+}
+
+/* Cart Modal (Initially hidden) */
+.cart-modal {
+    background: rgba(0, 0, 0, 0.6);
+    display: none; /* Modal hidden initially */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Cart Modal Content */
+.cart-modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+    text-align: center;
+    position: relative;
+    max-height: 80%;
+    overflow-y: auto;
+}
+
+/* Close Cart Button (X) */
+.close-cart-btn {
+    background-color: transparent;
+    border: none;
+    font-size: 30px;
+    color: #333;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.close-cart-btn:hover {
+    color: #ff6600;
+}
+
+/* Cart Items */
+#cart-items {
+    margin-top: 20px;
+}
+
+.cart-item {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-item button.remove-btn {
+    background-color: transparent;
+    border: none;
+    color: #ff6600;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.cart-item button.remove-btn:hover {
+    color: red;
+}
+
+#cart-total {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Checkout Button */
+#checkout-btn {
+    background-color: #ff6600;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+#checkout-btn:hover {
+    background-color: #ff9900;
+}
+
+/* Customer Information Section */
+.customer-info {
+    margin-top: 20px;
+    text-align: left;
+    font-size: 14px;
+}
+
+.customer-info h4 {
+    margin-bottom: 10px;
+}
+
+.customer-info label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.customer-info input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.customer-info input:focus {
+    border-color: #ff6600;
+    outline: none;
+}
+
+/* Menu Section */
+
+.menu-section {
+    margin-top: 40px;
+    text-align: center;
+}
+/* Style for h3 inside .menu-section (for section headers like Breakfast, Lunch, etc.) */
+.menu-section h2 {
+    font-size: 35px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 8px solid #ff6600;  /* Border applied only to the section header */
+    padding-bottom: 10px;
+}
+
+/* Style for other headings or menu items (to avoid border in cart items and other areas) */
+.menu-section {
+    margin-bottom: 40px;  /* Space between sections */
+}
+.menu-cards {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.menu-card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 200px;
+    text-align: center;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.menu-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.card-content {
+    margin-top: 10px;
+}
+
+.card-content h3 {
+    font-size: 16px;
+    margin: 10px 0;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 2px solid #ff6600;  /* Border applied only to the section header */
+    padding-bottom: 10px;
+}
+
+.card-content p.price {
+    font-size: 14px;
+    color: #ff6600;
+}
+
+.card-content p.description {
+    font-size: 12px;
+    color: #666;
+}
+
+.add-to-cart {
+    background-color: #ffcc00;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.add-to-cart:hover {
+    background-color: #ff9900;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .menu-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cart-modal-content {
+        width: 90%;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- Cart Button -->
+<div class="top-buttons">
+    <button class="cart-btn" id="cart-btn">Cart (<span id="cart-count">0</span>)</button>
+    <a href="login.html">
+        <button class="login-btn">Login</button>
+    </a>
+</div>
+<!-- Cart Modal -->
+<div id="cart-modal" class="cart-modal">
+    <div class="cart-modal-content">
+        <!-- Close Cart Button (X) -->
+        <button id="close-cart" class="close-cart-btn">×</button>
+
+        <h3>Your Cart (<span id="cart-count-modal">0</span> items)</h3>
+        <div id="cart-items"></div>
+        <p>Total: Rs. <span id="cart-total">0</span></p>
+
+<div class="customer-info">
+  <h4>Enter Your Information:</h4>
+  <form id="checkout-form">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="phone">Phone Number:</label>
+      <input type="text" id="phone" name="phone" required>
+
+      <label for="address">Delivery Address:</label>
+      <input type="text" id="address" name="address" required>
+
+      <button type="submit" id="checkout-btn">Checkout</button>
+
+
+  </form>
+</div>
+<!-- Header -->
+<header class="header">
+    <img src="logo.png" alt="Foodify Logo" class="logo">
+     <a href="login.html">
+        <button class="login-btn">Login</button>
+    </a>
+</div>
+</header>
+</div>
+<!-- Breakfast Popup (hidden initially) -->
+ <div class="menu-section" id="breakfast-section">
+        <h2>Breakfast</h2>
+        <div class="menu-cards">
+            <div class="menu-card" data-name="Sunrise Scramble" data-price="300">
+                <img src="sunrise_scramble.jpg" alt="Sunrise Scramble" class="menu-card-img">
+                <div class="card-content">
+                    <p class="price">Rs. 300</p>
+                    <h3 class="card-title">Sunrise Scramble</h3>
+                    <p class="description">Scrambled eggs, bell peppers, onions, cheese, and a side of toast.</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+            <div class="menu-card" data-name="Morning Delight Pancakes" data-price="360">
+                <img src="morning_delight_pancakes.jpg" alt="Morning Delight Pancakes" class="menu-card-img">
+                <div class="card-content">
+                    <p class="price">Rs. 360</p>
+                    <h3 class="card-title">Morning Delight Pancakes</h3>
+                    <p class="description">Fluffy pancakes served with maple syrup, fresh strawberries, and whipped cream.</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+            <div class="menu-card" data-name="Crispy Bacon Egg Sandwich" data-price="280">
+                <img src="crispy_bacon_egg_sandwich.jpg" alt="Crispy Bacon Egg Sandwich" class="menu-card-img">
+                <div class="card-content">
+                    <p class="price">Rs. 280</p>
+                    <h3 class="card-title">Crispy Bacon Egg Sandwich</h3>
+                    <p class="description">Bacon, a fried egg, lettuce, tomato, and mayo in a soft sandwich bun.</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+            <div class="menu-card" data-name="Avocado Toast Supreme" data-price="320">
+                <img src="avocado_toast_supreme.jpg" alt="Avocado Toast Supreme" class="menu-card-img">
+                <div class="card-content">
+                    <p class="price">Rs. 320</p>
+                    <h3 class="card-title">Avocado Toast Supreme</h3>
+                    <p class="description">Toasted sourdough bread with mashed avocado, poached eggs, and chili flakes.</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+            <div class="menu-card" data-name="Veggie Power Bowl" data-price="300">
+                <img src="veggie_power_bowl.jpg" alt="Veggie Power Bowl" class="menu-card-img">
+                <div class="card-content">
+                    <p class="price">Rs. 300</p>
+                    <h3 class="card-title">Veggie Power Bowl</h3>
+                    <p class="description">Quinoa, avocado, cherry tomatoes, cucumber, spinach, and a lemon vinaigrette dressing.</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+            <div class="menu-card" data-name="Berry Yogurt Parfait" data-price="340">
+                <img src="berry_yogurt_parfait.jpg" alt="Berry Yogurt Parfait" class="menu-card-img">
+                <div class="card-content">
+                    <p class="price">Rs. 340</p>
+                    <h3 class="card-title">Berry Yogurt Parfait</h3>
+                    <p class="description">Greek yogurt, mixed berries, honey, and granola layered.</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+            <div class="menu-card" data-name="Chili Cheese Omelette" data-price="350">
+                <img src="chili_cheese_omelette.jpg" alt="Chili Cheese Omelette" class="menu-card-img">
+                <div class="card-content">
+                    <p class="price">Rs. 350</p>
+                    <h3 class="card-title">Chili Cheese Omelette</h3>
+                    <p class="description">Eggs, cheddar cheese, jalapeños, onions, and a side of toast.</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+            <div class="menu-card" data-name="Buttermilk Waffles" data-price="320">
+                <img src="buttermilk_waffles.jpg" alt="Buttermilk Waffles" class="menu-card-img">
+                <div class="card-content">
+                    <p class="price">Rs. 320</p>
+                    <h3 class="card-title">Buttermilk Waffles</h3>
+                    <p class="description">Crispy waffles served with maple syrup, and a dusting of powdered sugar.</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<div class="menu-section" id="lunch-section">
+        <h2>Lunch</h2>
+        <div class="menu-cards">
+            <div class="menu-card" data-name="Beef Supreme Burger" data-price="800">
+                <img src="beef_burger.jpg" alt="Beef Supreme Burger" class="menu-card-img">
+                <div class="card-content">
+                    <p class="price">Rs. 800</p>
+                    <h3 class="card-title">Beef Supreme Burger</h3>
+                    <p class="description">Made with ground beef, lettuce, tomato, cheese, onions, and special sauce.</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+            <div class="menu-card" data-name="Grilled Chicken Salad" data-price="350">
+                <img src="chicken_salad.jpg" alt="Grilled Chicken Salad" class="menu-card-img">
+                <div class="card-content">
+                    <p class="price">Rs. 350</p>
+                    <h3 class="card-title">Grilled Chicken Salad</h3>
+                    <p class="description">Made with grilled chicken breast, mixed greens, cucumbers, and vinaigrette.</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+            <div class="menu-card" data-name="Spaghetti Aglio e Olio" data-price="900">
+                <img src="spaghetti.jpg" alt="Spaghetti Aglio e Olio" class="menu-card-img">
+                <div class="card-content">
+                    <p class="price">Rs. 900</p>
+                    <h3 class="card-title">Spaghetti Aglio e Olio</h3>
+                    <p class="description">Spaghetti with olive oil, garlic, red pepper flakes, parsley, and parmesan.</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+            <div class="menu-card" data-name="Falafel Wrap" data-price="350">
+                <img src="falafel_wrap.jpg" alt="Falafel Wrap" class="menu-card-img">
+                <div class="card-content">
+                    <p class="price">Rs. 350</p>
+                    <h3 class="card-title">Falafel Wrap</h3>
+                    <p class="description">Crispy falafel balls wrapped in a pita with lettuce, tomatoes, cucumbers, and tahini sauce.</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+            <div class="menu-card" data-name="Vegetable Stir-Fry" data-price="350">
+                <img src="stir_fry.jpg" alt="Vegetable Stir-Fry" class="menu-card-img">
+                <div class="card-content">
+                    <p class="price">Rs. 350</p>
+                    <h3 class="card-title">Vegetable Stir-Fry</h3>
+                    <p class="description">Stir-fried mixed vegetables in soy sauce with a side of rice.</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+            <div class="menu-card" data-name="Chicken Tikka Masala" data-price="550">
+                <img src="chicken_tikka.jpg" alt="Chicken Tikka Masala" class="menu-card-img">
+                <div class="card-content">
+                    <p class="price">Rs. 550</p>
+                    <h3 class="card-title">Chicken Tikka Masala</h3>
+                    <p class="description">Boneless chicken cooked in a creamy tomato gravy, served with basmati rice.</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+            <div class="menu-card" data-name="Mutton Korma" data-price="600">
+                <img src="mutton_korma.jpg" alt="Mutton Korma" class="menu-card-img">
+                <div class="card-content">
+                    <p class="price">Rs. 600</p>
+                    <h3 class="card-title">Mutton Korma</h3>
+                    <p class="description">Tender mutton cooked in a rich, creamy gravy made with yogurt, and spices.</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+            <div class="menu-card" data-name="Chicken Biryani" data-price="560">
+                <img src="chicken_biryani.jpg" alt="Chicken Biryani" class="menu-card-img">
+                <div class="card-content">
+                    <p class="price">Rs. 560</p>
+                    <h3 class="card-title">Chicken Biryani</h3>
+                    <p class="description">Spiced rice, tender chicken, saffron, yogurt, onions, and fragrant spices.</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- Dinner Section -->
+<div class="menu-section" id="dinner-section">
+    <h2>Dinner</h2>
+    <div class="menu-cards">
+        <div class="menu-card" data-name="Chicken Karahi" data-price="800">
+            <img src="chicken_karahi.jpg" alt="Chicken Karahi" class="menu-card-img">
+            <div class="card-content">
+                <p class="price">Rs. 800</p>
+                <h3 class="card-title">Chicken Karahi</h3>
+                <p class="description">Chicken cooked in a wok with ginger, garlic, tomatoes, green chilies, and aromatic spices.</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+        <div class="menu-card" data-name="Mutton Rogan Josh" data-price="950">
+            <img src="mutton_rogan_josh.jpg" alt="Mutton Rogan Josh" class="menu-card-img">
+            <div class="card-content">
+                <p class="price">Rs. 950</p>
+                <h3 class="card-title">Mutton Rogan Josh</h3>
+                <p class="description">Tender mutton slow-cooked in a rich gravy with yogurt, spices, and tomatoes.</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+        <div class="menu-card" data-name="Pasta Primavera" data-price="900">
+            <img src="pasta_primavera.jpg" alt="Pasta Primavera" class="menu-card-img">
+            <div class="card-content">
+                <p class="price">Rs. 900</p>
+                <h3 class="card-title">Pasta Primavera</h3>
+                <p class="description">Penne pasta with mixed vegetables, olive oil, garlic, and parmesan cheese.</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+        <div class="menu-card" data-name="Biryani Pulao" data-price="550">
+            <img src="biryani_pulao.jpg" alt="Biryani Pulao" class="menu-card-img">
+            <div class="card-content">
+                <p class="price">Rs. 550</p>
+                <h3 class="card-title">Biryani Pulao</h3>
+                <p class="description">Fragrant basmati rice with marinated chicken or mutton, a blend of spices.</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+        <div class="menu-card" data-name="Beef Quesadilla" data-price="400">
+            <img src="beef_quesadilla.jpg" alt="Beef Quesadilla" class="menu-card-img">
+            <div class="card-content">
+                <p class="price">Rs. 400</p>
+                <h3 class="card-title">Beef Quesadilla</h3>
+                <p class="description">Grilled beef strips, melted cheese, onions, and flour tortillas.</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+        <div class="menu-card" data-name="Veggie Burger" data-price="550">
+            <img src="veggie_burger.jpg" alt="Veggie Burger" class="menu-card-img">
+            <div class="card-content">
+                <p class="price">Rs. 550</p>
+                <h3 class="card-title">Veggie Burger</h3>
+                <p class="description">Veggie patty made from beans, served with lettuce, tomato, and a whole wheat bun.</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+        <div class="menu-card" data-name="Vegetable Korma" data-price="500">
+            <img src="vegetable_korma.jpg" alt="Vegetable Korma" class="menu-card-img">
+            <div class="card-content">
+                <p class="price">Rs. 500</p>
+                <h3 class="card-title">Vegetable Korma</h3>
+                <p class="description">Mixed vegetables cooked in a rich, creamy gravy made from yogurt, coconut, and spices.</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+        <div class="menu-card" data-name="Fish Curry" data-price="500">
+            <img src="fish.jpg" alt="Fish Curry" class="menu-card-img">
+            <div class="card-content">
+                <p class="price">Rs. 500</p>
+                <h3 class="card-title">Fish Curry</h3>
+                <p class="description">Fish fillets cooked in a spicy, tangy curry with tomatoes, onions, and a mix of spices.</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+<!-- Sweet Treats Section -->
+<div class="menu-section" id="sweet-treats-section">
+    <h2>Sweet Treats</h2>
+    <div class="menu-cards">
+        <div class="menu-card" data-name="Gulab Jamun" data-price="150">
+            <img src="gulab_jamun.jpg" alt="Gulab Jamun" class="menu-card-img">
+            <div class="card-content">
+                <p class="price">Rs. 150 - 2 pieces</p>
+                <h3 class="card-title">Gulab Jamun</h3>
+                <p class="description">Deep-fried dough balls soaked in a sweet rose-flavored syrup.</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+        <div class="menu-card" data-name="Kheer" data-price="250">
+            <img src="kheer.jpg" alt="Kheer" class="menu-card-img">
+            <div class="card-content">
+                <p class="price">Rs. 250</p>
+                <h3 class="card-title">Kheer</h3>
+                <p class="description">Grated carrots cooked in milk and sugar, and garnished with nuts.</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+        <div class="menu-card" data-name="Badam Barfi" data-price="250">
+            <img src="badam_barfi.jpg" alt="Badam Barfi" class="menu-card-img">
+            <div class="card-content">
+                <p class="price">Rs. 250</p>
+                <h3 class="card-title">Badam Barfi</h3>
+                <p class="description">Almond-based sweet, made with ground almonds, sugar, and cut into diamond-shaped pieces.</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+        <div class="menu-card" data-name="Saffron Pudding" data-price="300">
+            <img src="saffron_pudding.jpg" alt="Saffron Pudding" class="menu-card-img">
+            <div class="card-content">
+                <p class="price">Rs. 300</p>
+                <h3 class="card-title">Saffron Pudding</h3>
+                <p class="description">A rich pudding made with milk, saffron, dry fruits, served during special occasions.</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+        <div class="menu-card" data-name="Tiramisu" data-price="350">
+            <img src="tiramisu.jpg" alt="Tiramisu" class="menu-card-img">
+            <div class="card-content">
+                <p class="price">Rs. 350</p>
+                <h3 class="card-title">Tiramisu</h3>
+                <p class="description">Layers of coffee-soaked ladyfingers, mascarpone cheese, and a dusting of chocolate.</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+        <div class="menu-card" data-name="Doughnuts" data-price="180">
+            <img src="doughnuts.jpg" alt="Doughnuts" class="menu-card-img">
+            <div class="card-content">
+                <p class="price">Rs. 180 (for 2 pieces)</p>
+                <h3 class="card-title">Doughnuts</h3>
+                <p class="description">Delicious fried dough covered with sugar and filled with different fillings.</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+        <div class="menu-card" data-name="Apple Pie" data-price="700">
+            <img src="apple_pie.jpg" alt="Apple Pie" class="menu-card-img">
+            <div class="card-content">
+                <p class="price">Rs. 700</p>
+                <h3 class="card-title">Apple Pie</h3>
+                <p class="description">Made with flaky pie crust, apple filling, served with a scoop of vanilla ice cream.</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+        <div class="menu-card" data-name="Chocolate Cake" data-price="400">
+            <img src="chocolate_cake.jpg" alt="Chocolate Cake" class="menu-card-img">
+            <div class="card-content">
+                <p class="price">Rs. 400</p>
+                <h3 class="card-title">Chocolate Cake</h3>
+                <p class="description">Moist and rich chocolate cake with a creamy frosting.</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script>
+    let cart = [];
+
+    function updateCart() {
+        const cartCount = document.getElementById('cart-count');
+        const cartCountModal = document.getElementById('cart-count-modal');
+        const cartItems = document.getElementById('cart-items');
+        const cartTotal = document.getElementById('cart-total');
+
+        cartItems.innerHTML = '';
+        let total = 0;
+
+        cart.forEach((item, index) => {
+            const itemElement = document.createElement('div');
+            itemElement.classList.add('cart-item');
+            itemElement.innerHTML = `
+                <p>${item.name} - Rs. ${item.price}</p>
+                <button class="remove-btn" data-index="${index}">×</button>
+            `;
+            cartItems.appendChild(itemElement);
+            total += item.price;
+        });
+
+        cartCount.textContent = cart.length;
+        cartCountModal.textContent = cart.length;
+        cartTotal.textContent = total.toFixed(2);
+
+        document.querySelectorAll('.remove-btn').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const index = e.target.getAttribute('data-index');
+                cart.splice(index, 1);
+                updateCart();
+            });
+        });
+    }
+
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+        button.addEventListener('click', (e) => {
+            const card = e.target.closest('.menu-card');
+            const name = card.getAttribute('data-name');
+            const price = parseFloat(card.getAttribute('data-price'));
+            cart.push({ name, price });
+            updateCart();
+        });
+    });
+
+    const cartButton = document.getElementById('cart-btn');
+    const cartModal = document.getElementById('cart-modal');
+    cartButton.addEventListener('click', () => { cartModal.style.display = 'flex'; });
+    const closeCartButton = document.getElementById('close-cart');
+    closeCartButton.addEventListener('click', () => { cartModal.style.display = 'none'; });
+
+    // ✅ Validation without Email
+    function validateForm(name, phone, address) {
+        const phoneRegex = /^[0-9]{10,15}$/;
+
+        if (cart.length === 0) {
+            alert("⚠️ Your cart is empty. Please add items before checkout.");
+            return false;
+        }
+        if (name.trim().length < 3) {
+            alert("⚠️ Please enter a valid name (at least 3 characters).");
+            return false;
+        }
+        if (!phoneRegex.test(phone)) {
+            alert("⚠️ Please enter a valid phone number (10–15 digits).");
+            return false;
+        }
+        if (address.trim().length < 5) {
+            alert("⚠️ Please enter a valid address (at least 5 characters).");
+            return false;
+        }
+        return true;
+    }
+
+    document.getElementById('checkout-btn').addEventListener('click', function(e) {
+        e.preventDefault();
+
+        const name = document.getElementById('name').value;
+        const phone = document.getElementById('phone').value;
+        const address = document.getElementById('address').value;
+
+        if (!validateForm(name, phone, address)) {
+            return;
+        }
+
+        const orderDetails = cart.map(item => `${item.name} - Rs. ${item.price}`).join('<br>');
+        const totalAmount = document.getElementById('cart-total').textContent;
+
+        fetch('send_email.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: `name=${encodeURIComponent(name)}&phone=${encodeURIComponent(phone)}&address=${encodeURIComponent(address)}&orderDetails=${encodeURIComponent(orderDetails)}&totalAmount=${encodeURIComponent(totalAmount)}`
+        })
+        .then(response => response.text())
+        .then(result => {
+            alert('✅ Order placed successfully! Email sent.');
+            cart = [];
+            updateCart();
+            document.getElementById('checkout-form').reset();
+            cartModal.style.display = 'none';
+        })
+        .catch(error => {
+            alert('❌ Failed to place the order.');
+            console.error('Error:', error);
+        });
+    });
+</script>
+
+</body>
+</html>
