@@ -1,0 +1,143 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fafafa;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #ff6347;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+header .logo img {
+    height: 40px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+main {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.order-summary {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.product {
+    flex: 1;
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.product img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+.product-details h2 {
+    margin: 0 0 10px;
+}
+
+.product-details .customization {
+    margin: 15px 0;
+}
+
+.product-details .customization label {
+    margin-right: 10px;
+}
+
+.add-to-cart {
+    background-color: #ff6347;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.add-to-cart:hover {
+    background-color: #d9534f;
+}
+
+.order-form, .order-summary-details {
+    flex: 1;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.order-form h3, .order-summary-details h3 {
+    margin-top: 0;
+}
+
+.order-form input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.order-summary-details ul {
+    list-style: none;
+    padding: 0;
+}
+
+.order-summary-details li {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+.total {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.place-order {
+    background-color: #ff6347;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    font-size: 1.2em;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.place-order:hover {
+    background-color: #d9534f;
+}
+
+footer {
+    background-color: #ff6347;
+    text-align: center;
+    color: white;
+    padding: 10px 0;
+    margin-top: 40px;
+}
+
+footer p {
+    margin: 0;
+}
