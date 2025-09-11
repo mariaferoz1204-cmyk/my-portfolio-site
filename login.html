@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login & SignUp</title>
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+  <div class="container">
+
+    <!-- Login Form -->
+    <div class="form-container login-form">
+      <h2>Login</h2>
+      <form id="loginForm">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+        
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+        
+        <button type="submit" class="main-btn">Login</button>
+      </form>
+
+      <!-- OR Divider -->
+      <div class="divider"><span>OR</span></div>
+
+      <!-- Google Login Button -->
+      <button type="button" class="google-btn">
+        <img src="google.png" alt="Google Logo">
+        Sign in with Google
+      </button>
+
+      <p class="signup-link">Don't have an account? <a href="#" id="signupLink">Sign up</a></p>
+    </div>
+
+    <!-- Sign Up Form -->
+    <div class="form-container signup-form" style="display:none;">
+      <h2>Sign Up</h2>
+      <form id="signupForm">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+        
+        <label for="email-signup">Email</label>
+        <input type="email" id="email-signup" name="email" placeholder="Enter your email" required>
+        
+        <label for="password-signup">Password</label>
+        <input type="password" id="password-signup" name="password" placeholder="Enter your password" required>
+        
+        <button type="submit" class="main-btn">Sign Up</button>
+      </form>
+
+      <!-- OR Divider -->
+      <div class="divider"><span>OR</span></div>
+
+      <!-- Google Signup Button -->
+      <button type="button" class="google-btn">
+        <img src="google.png" alt="Google Logo">
+        Sign up with Google
+      </button>
+
+      <p class="login-link">Already have an account? <a href="#" id="loginLink">Login</a></p>
+    </div>
+
+    <!-- Right side image -->
+    <div class="image-section">
+      <img src="login-image.jpg" alt="Login Image">
+    </div>
+  </div>
+
+  <!-- JS for switching forms + redirect -->
+  <script src="login.js"></script>
+</body>
+</html>
